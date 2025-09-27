@@ -14,10 +14,11 @@
 </head>
 <body>
     
-    <form action="http://localhost:8080/">
+    
+        
+    <form action="http://localhost:8080/user" method="post">
          
-       
-        <div class="loginContainer">
+       <div class="loginContainer">
             <h1>Welcome RETRO HEAD !</h1>
              <h3>please proceed</h3>
             <label for="login"  class="enterUser">Enter Username :</label>
@@ -31,10 +32,17 @@
             <button style="border-radius: 8px; height:50px ;width:100px" id="loginSubmit">Submit</button>
             
     <h3>Dont have an account !</h3>
-    <button id="loginSignup" style="border-radius: 8px; height:50px ;width:100px" >Signup</button>
-        </div>
+    <a id="signupLink" href="http://localhost:8080/signup"  style="border-radius: 8px; height:50px ;width:100px ;font-weight:bold;text-align: center;text-decoration: none;" > 
+       Signup
+    </a>
+   
+    </div>
+        
     </form>
 
+     
+
+    
     
 </body>
 </html>
