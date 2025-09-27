@@ -1,5 +1,5 @@
 
-.bitcount-prop-double-ink {
+/* .bitcount-prop-double-ink {
   font-family: "Bitcount Prop Double Ink", system-ui;
   font-optical-sizing: auto;
   font-weight: 400;
@@ -15,6 +15,36 @@
     "XPN2" 0,
     "YPN1" 0,
     "YPN2" 0;
+} */
+
+*{
+
+    
+    background-color:beige;
+
+   
+}
+
+body {
+                        /* full viewport height */
+    display: flex;
+    justify-content: center; /* Horizontally centers the container */
+    align-items: center;     /* Vertically centers the container */
+    min-height: 100vh;       /* Makes the body take up the full screen height */
+    margin: 0;              /* remove default body margin */
+}
+
+.container{
+
+     display: flex;
+    flex-direction: column; /* Stacks elements vertically */
+    align-items: center;    /* Horizontally centers all elements inside */
+    text-align: center;     /* Ensures text within elements is centered */
+    gap: 25px;              /* Adds nice spacing between all elements */
+    padding: 40px;
+    /* border: 2px solid #D3D3D3; */
+    border-radius: 10px;
+    /* background-color: #FAFAD2; Light Goldenrod Yellow */
 }
 
 
@@ -34,7 +64,239 @@ h1{
     "XPN2" 0,
     "YPN1" 0,
     "YPN2" 0;
+    animation:  heading 1s ease-in 0.2s  normal;
+    
+}
+
+
+h3{
+
+     font-family: "Bitcount Prop Double Ink", system-ui;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings:
+    "slnt" 0,
+    "CRSV" 0.5,
+    "ELSH" 0,
+    "ELXP" 0,
+    "SZP1" 0,
+    "SZP2" 0,
+    "XPN1" 0,
+    "XPN2" 0,
+    "YPN1" 0,
+    "YPN2" 0;
+ animation:  heading 1s ease-in 1.2s  normal;
+}
+
+.loginText{
+
+     font-family: "Bitcount Prop Double Ink", system-ui;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings:
+    "slnt" 0,
+    "CRSV" 0.5,
+    "ELSH" 0,
+    "ELXP" 0,
+    "SZP1" 0,
+    "SZP2" 0,
+    "XPN1" 0,
+    "XPN2" 0,
+    "YPN1" 0,
+    "YPN2" 0;
+    
 }
 
 
 
+.login{
+
+    height: 50px;
+    width: 100px;
+     font-family: "Bitcount Prop Double Ink", system-ui;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings:
+    "slnt" 0,
+    "CRSV" 0.5,
+    "ELSH" 0,
+    "ELXP" 0,
+    "SZP1" 0,
+    "SZP2" 0,
+    "XPN1" 0,
+    "XPN2" 0,
+    "YPN1" 0,
+    "YPN2" 0;
+
+    border-radius: 10px ;
+    margin-right: 10px;
+
+}
+
+.login:hover{
+    animation: hoverBtn 0.3s ease-in 0.2s infinite  normal;
+}
+
+.signup:hover{
+    animation: hoverBtn 0.3s ease-in 0.2s infinite  normal;
+}
+
+
+
+.signup{
+
+    height: 50px;
+    width: 100px;
+     font-family: "Bitcount Prop Double Ink", system-ui;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings:
+    "slnt" 0,
+    "CRSV" 0.5,
+    "ELSH" 0,
+    "ELXP" 0,
+    "SZP1" 0,
+    "SZP2" 0,
+    "XPN1" 0,
+    "XPN2" 0,
+    "YPN1" 0,
+    "YPN2" 0;
+
+     border-radius: 10px ;
+     margin-left: 30px;
+
+}
+
+.loginContainer{
+
+    display: flex;
+    flex-direction: column;
+    gap :15px;
+    width: 600px;
+                
+  justify-content: center;   
+  align-items: center;        
+  height: 400px; 
+    
+}
+
+.enterUser{
+
+    font-family: "Bitcount Prop Double Ink", system-ui;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings:
+    "slnt" 0,
+    "CRSV" 0.5,
+    "ELSH" 0,
+    "ELXP" 0,
+    "SZP1" 0,
+    "SZP2" 0,
+    "XPN1" 0,
+    "XPN2" 0,
+    "YPN1" 0,
+    "YPN2" 0;
+    
+}
+
+.enterEmail{
+
+    font-family: "Bitcount Prop Double Ink", system-ui;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings:
+    "slnt" 0,
+    "CRSV" 0.5,
+    "ELSH" 0,
+    "ELXP" 0,
+    "SZP1" 0,
+    "SZP2" 0,
+    "XPN1" 0,
+    "XPN2" 0,
+    "YPN1" 0,
+    "YPN2" 0;
+    
+}
+
+.enterPassword{
+
+    font-family: "Bitcount Prop Double Ink", system-ui;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings:
+    "slnt" 0,
+    "CRSV" 0.5,
+    "ELSH" 0,
+    "ELXP" 0,
+    "SZP1" 0,
+    "SZP2" 0,
+    "XPN1" 0,
+    "XPN2" 0,
+    "YPN1" 0,
+    "YPN2" 0;
+    
+}
+
+#login{
+
+    border-radius: 6px;
+    text-align: center;
+    box-shadow: 2px 2px #4A4A4A;
+}
+#emailid{
+
+    border-radius: 6px;
+    text-align: center;
+    box-shadow: 2px 2px #4A4A4A;
+}
+#passcode{
+    text-align: center;
+    border-radius: 6px;
+    box-shadow: 2px 2px #4A4A4A;
+}
+
+#loginSubmit{
+
+    margin-top: 10px;
+}
+#loginSubmit:hover{
+
+    animation: hoverBtn 0.3s ease-in 0.2s infinite  normal ;
+}
+#loginSignup:hover{
+
+    animation: hoverBtn 0.3s ease-in 0.2s infinite  normal ;
+}
+
+@keyframes hoverBtn {
+    
+    from{
+        background-color:beige;
+        box-shadow: 0px 0px 0px ;
+        transform: scale(1);
+    }
+    to{
+        background-color: #FAFAD2;
+        box-shadow: 6px 6px #4A4A4A;
+        transform: scale(1.2);
+    }
+}
+
+@keyframes heading {
+    
+    from{
+
+        transform: scale(1);
+    }
+    to{
+
+        transform: scale(1.7);
+    }
+}
