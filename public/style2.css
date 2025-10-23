@@ -1,0 +1,103 @@
+*{
+
+    background-color: beige;
+}
+
+.userWelcome{
+    
+     display: flex;
+    flex-direction: column; 
+    align-items: center;    
+       
+           
+width: 50%;
+    /* border: 2px solid #D3D3D3; */
+    border-radius: 10px;
+    /* background-color: #FAFAD2; Light Goldenrod Yellow */
+    text-align: center;
+    
+    border: 2px solid brown;
+    margin-top:20px ;
+    margin-left: 25%;
+     font-family: "Bitcount Prop Double Ink", system-ui;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  
+}
+
+.userWelcome > h1{
+
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+/* .userProfile{
+
+    border: 2px solid brown;
+    width: 20%;
+    margin-top: 30px;
+    border-radius: 10px;
+    
+}
+
+.userProfile > h2{
+     font-family: "Dancing Script", cursive;
+  font-optical-sizing: auto;
+  color: #2C2C2C;
+  font-style: normal;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    text-align: center;
+    
+} */
+
+.userContainer{
+
+    margin-top: 80px;
+}
+
+.userContainer > div{
+
+     border: 2px solid brown;
+    width: 20%;
+    margin-top: 30px;
+    border-radius: 10px;
+}
+
+.userContainer > div > h2{
+
+    font-family: "Dancing Script", cursive;
+  font-optical-sizing: auto;
+  color: #2C2C2C;
+  font-style: normal;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+ .search-box>input{
+
+    margin-top: 30px;
+    border-radius: 30px;
+    width: 16%;
+    height: 30px;
+    border: 2px solid brown;
+     font-family: "Dancing Script", cursive;
+  font-optical-sizing: auto;
+  color: #2C2C2C;
+  font-style: normal;
+  font-size: large;
+  text-align: center;
+}
+.material-symbols-outlined{
+
+    margin-top: 0px;
+    border-radius: 50%;
+    
+}
+.search-btn{
+
+    border-radius: 50%;
+
+}

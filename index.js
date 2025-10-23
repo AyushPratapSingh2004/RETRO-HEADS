@@ -65,17 +65,22 @@ app.post("/user",(req,res)=>{
 
         if(result.length==0){
 
-            res.send("no user found ");
+           return res.send("no user found ");
         }
 
         if(password != pass || email != mail ){
 
-            res.send("incorrect email or  password");
+           return res.send("incorrect email or  password");
+        }
+
+        if(password.length < 8){
+
+            return res.send("password should  atleat contain 8 letters");
         }
 
         if(password == pass){
 
-            res.render("user",{data});
+           return res.render("user",{data}); 
         }
   
     })
