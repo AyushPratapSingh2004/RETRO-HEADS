@@ -6,7 +6,11 @@ const app = express();
 
 const port = 8080;
 
+const mongoose = require('mongoose');
+
 const path = require("path");
+
+const MONGO_URL = "mongodb://127.0.0.1:27017/miniproject";
 
 const connection = mysql.createConnection({
   host: 'localhost',
@@ -14,6 +18,19 @@ const connection = mysql.createConnection({
   database: 'miniproject',
   password : "Ayush@rev1"
 });
+
+main()
+.then(()=>{ 
+    
+    console.log("connected to database");
+})
+.catch(err => console.log(err));
+
+async function main() {
+  await mongoose.connect(MONGO_URL);
+
+  // use `await mongoose.connect('mongodb://user:password@127.0.0.1:27017/test');` if your database has auth enabled
+}
 
 app.listen(port , ()=>{
 
@@ -97,5 +114,10 @@ app.post("/newUser",(req,res)=>{
         res.redirect("login");
 
     })
+
+})
+
+app.get("/user/home", async(req,res)=>{
+
 
 })

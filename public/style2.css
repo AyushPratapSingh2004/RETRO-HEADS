@@ -1,6 +1,6 @@
 *{
 
-    background-color: beige;
+    background-color: white;
 }
 
 .userWelcome{
@@ -16,20 +16,22 @@ width: 50%;
     /* background-color: #FAFAD2; Light Goldenrod Yellow */
     text-align: center;
     
-    border: 2px solid brown;
+    /* border: 2px solid brown; */
     margin-top:20px ;
     margin-left: 25%;
      font-family: "Bitcount Prop Double Ink", system-ui;
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
-  
+  margin-bottom: 20px;
 }
 
-.userWelcome > h1{
+.userWelcome > p{
 
-    margin-top: 0px;
-    margin-bottom: 0px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    font-size: larger;
 }
 
 /* .userProfile{
@@ -100,4 +102,17 @@ width: 50%;
 
     border-radius: 50%;
 
+}
+
+
+.navbar{
+
+    height :5rem;
+
+     font-family: "Dancing Script", cursive;
+  font-optical-sizing: auto;
+  color: #2C2C2C;
+  font-style: normal;
+  font-size: x-large;
+  text-align: center;
 }
