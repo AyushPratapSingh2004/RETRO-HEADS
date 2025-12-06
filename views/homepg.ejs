@@ -1,0 +1,18 @@
+
+<% layout("layouts/boilerplate") %>
+<body>
+    
+    
+
+        <% for(let story of storyData) {%>
+
+            <div class="allstories">
+            <h1><%=  story.username %></h1>
+             <h3> <%=  story.title %></h3>
+             <p> <%=  story.story %></p>
+
+        </div>
+            <% } %>
+    
+</body>
+</html>

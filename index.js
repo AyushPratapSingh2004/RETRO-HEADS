@@ -10,6 +10,10 @@ const mongoose = require('mongoose');
 
 const path = require("path");
 
+const Story = require("./models/userModel");
+
+const ejsMate = require("ejs-mate");
+
 const MONGO_URL = "mongodb://127.0.0.1:27017/miniproject";
 
 const connection = mysql.createConnection({
@@ -41,10 +45,12 @@ app.set("view engine","ejs");
 
 app.set("views", path.join(__dirname,"views"));
 
-app.use(express.static("public"));
+app.use(express.static(path.join(__dirname, "public")));
+
 
 app.use(express.urlencoded({extended :true}));
 
+app.engine("ejs",ejsMate);
 
 app.get("/",(req,res)=>{
 
@@ -119,5 +125,7 @@ app.post("/newUser",(req,res)=>{
 
 app.get("/user/home", async(req,res)=>{
 
+let storyData = await Story.find();
 
+res.render("homepg",{storyData});
 })

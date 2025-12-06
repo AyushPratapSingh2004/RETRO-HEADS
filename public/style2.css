@@ -53,7 +53,7 @@ width: 50%;
     text-align: center;
     
 } */
-
+/* 
 .userContainer{
 
     margin-top: 80px;
@@ -102,7 +102,7 @@ width: 50%;
 
     border-radius: 50%;
 
-}
+} */
 
 
 .navbar{
@@ -115,4 +115,36 @@ width: 50%;
   font-style: normal;
   font-size: x-large;
   text-align: center;
+}
+
+.allstories{
+    align-self: auto;
+    width: 60%;
+    margin-left: 20%;
+
+    border: 2px solid black;
+    border-radius: 20px;
+    margin-bottom: 30px;
+    margin-top: 30px;
+    box-shadow: 3px 3px gray;
+}
+
+.allstories:hover{
+
+    box-shadow: 10px 10px rgb(116, 115, 115);
+    transform: scale(1.1);
+    transition: 0.3s ease;
+}
+
+.allstories>h1{
+
+    text-align: center;
+}
+.allstories>h3{
+
+    text-align: center;
+}
+.allstories>p{
+
+    text-align: center;
 }
