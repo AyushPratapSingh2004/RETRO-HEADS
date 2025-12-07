@@ -9,7 +9,7 @@ jobs:
 
     services:
       mysql:
-        image: mysql:5.7
+        image: mysql:8
         env:
           MYSQL_ROOT_PASSWORD: root
           MYSQL_DATABASE: miniproject
@@ -20,6 +20,7 @@ jobs:
           --health-interval=10s
           --health-timeout=5s
           --health-retries=3
+          --default-authentication-plugin=mysql_native_password
 
       mongo:
         image: mongo:latest
@@ -43,14 +44,27 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Wait for MySQL and MongoDB
+      - name: Wait for DBs
         run: sleep 20
 
+      - name: Create MySQL tables
+        run: |
+          mysql -h 127.0.0.1 -u root -proot -e "CREATE TABLE IF NOT EXISTS retro (
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            username VARCHAR(255),
+            email VARCHAR(255),
+            password VARCHAR(255)
+          );" miniproject
+
       - name: Test server startup
+        env:
+          MYSQL_HOST: 127.0.0.1
+          MYSQL_USER: root
+          MYSQL_PASSWORD: root
+          MYSQL_DATABASE: miniproject
         run: |
           echo "Starting server..."
           node index.js &
           SERVER_PID=$!
           sleep 30
-          echo "Server ran successfully for 30 seconds."
           kill $SERVER_PID

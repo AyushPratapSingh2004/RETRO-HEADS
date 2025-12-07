@@ -18,12 +18,20 @@ const ejsMate = require("ejs-mate");
 
 const MONGO_URL = "mongodb://127.0.0.1:27017/miniproject";
 
+// const connection = mysql.createConnection({
+//   host: 'localhost',
+//   user: 'root',
+//   database: 'miniproject',
+//   password : "Ayush@rev1"
+// });
+
 const connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  database: 'miniproject',
-  password : "Ayush@rev1"
+  host: process.env.MYSQL_HOST || 'localhost',
+  user: process.env.MYSQL_USER || 'root',
+  password: process.env.MYSQL_PASSWORD || 'root',
+  database: process.env.MYSQL_DATABASE || 'miniproject'
 });
+
 
 main()
 .then(()=>{ 
