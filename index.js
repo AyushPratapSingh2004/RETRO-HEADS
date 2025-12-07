@@ -12,6 +12,8 @@ const path = require("path");
 
 const Story = require("./models/userModel");
 
+const Place = require("./models/placeModel");
+
 const ejsMate = require("ejs-mate");
 
 const MONGO_URL = "mongodb://127.0.0.1:27017/miniproject";
@@ -35,6 +37,16 @@ async function main() {
 
   // use `await mongoose.connect('mongodb://user:password@127.0.0.1:27017/test');` if your database has auth enabled
 }
+
+
+const session = require("express-session");
+
+app.use(session({
+    secret: "secretkey",
+    resave: false,
+    saveUninitialized: false
+}));
+
 
 app.listen(port , ()=>{
 
@@ -69,6 +81,7 @@ app.get("/signup",(req,res)=>{
 
 
 
+
 app.post("/user",(req,res)=>{
 
     let {username , email , password} = req.body;
@@ -82,7 +95,7 @@ app.post("/user",(req,res)=>{
             console.log(err);
         }
         
-        let data = result[0];
+         let data = result[0];
         let pass = result[0].password;
         let mail = result[0].email;
 
@@ -102,7 +115,9 @@ app.post("/user",(req,res)=>{
         }
 
         if(password == pass){
-
+           
+             console.log(data);
+             req.session.userinfo = data;
            return res.render("user",{data}); 
         }
   
@@ -123,9 +138,172 @@ app.post("/newUser",(req,res)=>{
 
 })
 
+app.get("/forgot-password", (req, res) => {
+    res.render("forgotPassword");
+});
+
+
+app.post("/forgot-password", (req, res) => {
+    const { username, email, newPassword } = req.body;
+
+    let q = "SELECT * FROM retro WHERE username = ? AND email = ?";
+
+    connection.query(q, [username, email], (err, result) => {
+        if (err) {
+            console.log(err);
+            return res.send("Server Error");
+        }
+
+        if (result.length === 0) {
+            return res.send("Invalid username or email!");
+        }
+
+        // Update password
+        let updateQuery = "UPDATE retro SET password = ? WHERE username = ?";
+
+        connection.query(updateQuery, [newPassword, username], (err2, updateResult) => {
+            if (err2) {
+                console.log(err2);
+                return res.send("Unable to update password");
+            }
+
+            res.send(`
+                <h2>Password Reset Successful!</h2>
+                <a href="/login">Go to Login</a>
+            `);
+        });
+    });
+});
+
+
 app.get("/user/home", async(req,res)=>{
 
 let storyData = await Story.find();
 
 res.render("homepg",{storyData});
 })
+
+
+
+app.get("/user/newStory" , (req,res)=>{
+    const info = req.session.userinfo;
+    
+    if(info == undefined){
+        res.redirect("/login");
+    }
+    console.log(info);
+    res.render("newStory.ejs",{info});
+    
+})
+
+app.post("/user/newStory/:username",async(req,res)=>{
+    
+    const {username} = req.params;
+    const { title, story } = req.body;
+    await Story.create({ username,title, story });
+    res.redirect("/user/home");
+})
+
+app.get("/user/profile", async (req, res) => {
+    const info = req.session.userinfo;
+
+    if (!info) {
+        return res.redirect("/login");
+    }
+
+    
+    const userStories = await Story.find({ username: info.username });
+
+    res.render("profile", { info, userStories });
+});
+
+app.post("/user/delete/:id", async (req, res) => {
+    const info = req.session.userinfo;
+    const storyId = req.params.id;
+
+    if (!info) {
+        return res.redirect("/login");
+    }
+
+    
+    const story = await Story.findById(storyId);
+
+    
+    if (story.username !== info.username) {
+        return res.send("You cannot delete someone else's post!");
+    }
+
+    await Story.findByIdAndDelete(storyId);
+
+    res.redirect("/user/profile");
+});
+
+
+app.get("/user/search", async (req, res) => {
+    const { username } = req.query;
+
+    if (!username || username.trim() === "") {
+        return res.render("searchResults", { stories: [], username: null, message: "Please enter a username." });
+    }
+
+    const userStories = await Story.find({ username: username.trim() });
+
+    if (userStories.length === 0) {
+        return res.render("searchResults", { stories: [], username, message: "No stories found for this user." });
+    }
+
+    res.render("searchResults", { stories: userStories, username, message: null });
+});
+
+
+app.get("/user/places", async (req, res) => {
+    const places = await Place.find();
+    res.render("placesHome", { places });
+});
+
+
+app.get("/user/places/new", (req, res) => {
+    const info = req.session.userinfo;
+    if (!info) return res.redirect("/login");
+
+    res.render("newPlace", { info });
+});
+
+
+app.post("/user/places/new/:username", async (req, res) => {
+    const { username } = req.params;
+    const { placeName, state, city, description, bestTimeToVisit } = req.body;
+
+    await Place.create({
+        username,
+        placeName,
+        state,
+        city,
+        description,
+        bestTimeToVisit
+    });
+
+    res.redirect("/user/places");
+});
+
+
+app.get("/user/places/view/:id", async (req, res) => {
+    const place = await Place.findById(req.params.id);
+    res.render("placeDetails", { place });
+});
+
+
+app.post("/user/places/delete/:id", async (req, res) => {
+    const info = req.session.userinfo;
+    if (!info) return res.redirect("/login");
+
+    const place = await Place.findById(req.params.id);
+
+    // Check user access
+    if (place.username !== info.username) {
+        return res.send("You cannot delete this place!");
+    }
+
+    await Place.findByIdAndDelete(req.params.id);
+    res.redirect("/user/places");
+});

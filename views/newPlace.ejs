@@ -1,0 +1,31 @@
+<% layout("layouts/boilerplate") %>
+
+<body>
+
+<div class="form-container">
+    <h1>Add a New Place</h1>
+
+    <form action="/user/places/new/<%= info.username %>" method="post">
+
+        <label>Place Name</label>
+        <input type="text" name="placeName" required>
+
+        <label>State</label>
+        <input type="text" name="state" required>
+
+        <label>City</label>
+        <input type="text" name="city">
+
+        <label>Description</label>
+        <textarea name="description" required></textarea>
+
+        <label>Best Time To Visit</label>
+        <input type="text" name="bestTimeToVisit">
+
+        <button class="submit-btn">Submit</button>
+    </form>
+
+</div>
+
+</body>
+

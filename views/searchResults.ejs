@@ -1,0 +1,24 @@
+<% layout("layouts/boilerplate") %>
+
+<body>
+    
+
+<div class="search-container">
+    <h1 class="search-title">Stories by <%= username %></h1>
+
+    <% if (message) { %>
+        <p class="search-message"><%= message %></p>
+    <% } %>
+
+    <% if (stories.length > 0) { %>
+        <% stories.forEach(story => { %>
+
+            <div class="story-card">
+                <h3 class="story-title"><%= story.title %></h3>
+                <p class="story-text"><%= story.story %></p>
+            </div>
+
+        <% }) %>
+    <% } %>
+</div>
+</body>

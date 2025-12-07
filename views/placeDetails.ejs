@@ -1,0 +1,28 @@
+
+<% layout("layouts/boilerplate") %>
+
+<body>
+
+<div class="detail-container">
+
+    <h1><%= place.placeName %></h1>
+    <h3><%= place.city %>, <%= place.state %></h3>
+
+    <p class="desc"><%= place.description %></p>
+
+    <% if (place.bestTimeToVisit) { %>
+        <p><strong>Best time to visit:</strong> <%= place.bestTimeToVisit %></p>
+    <% } %>
+
+    <p><strong>Shared by:</strong> <%= place.username %></p>
+
+    <form action="/user/places/delete/<%= place._id %>" method="post">
+        <button class="delete-btn">Delete</button>
+    </form>
+
+    <a href="/user/places" class="back-btn">Back</a>
+
+</div>
+
+</body>
+

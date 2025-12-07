@@ -1,0 +1,28 @@
+
+<% layout("layouts/boilerplate") %>
+
+<body >
+    
+  <div class="storyBody">
+<div class="form-container">
+
+    <h1 class="form-title">Share Your Nostalgic Story</h1>
+     <h2><%=info.username %></h2>
+    <form action="/user/newStory/<%=info.username %>" method="POST" class="story-form">
+
+        <!-- <label class="form-label">Your Name:</label>
+        <input type="text" name="username" class="form-input" required> -->
+
+        <label class="form-label">Story Title:</label>
+        <input type="text" name="title" class="form-input" required>
+
+        <label class="form-label">Your Story:</label>
+        <textarea name="story" class="form-textarea" rows="6" required></textarea>
+
+        <button class="form-button">Submit Story</button>
+
+    </form>
+
+</div>
+            </div>
+</body>

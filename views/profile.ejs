@@ -1,0 +1,39 @@
+<% layout("layouts/boilerplate") %>
+<body>
+    
+
+<div class="profile-container">
+
+    <div class="profile-header">
+        <h1 class="profile-title">My Diary</h1>
+        <p class="username-display">Welcome, <%= info.username %>!</p>
+    </div>
+
+    <% if (userStories.length === 0) { %>
+        <p class="no-stories">You have not posted any stories yet.</p>
+    <% } else { %>
+
+        <div class="story-list">
+            <% userStories.forEach(story => { %>
+
+                <div class="story-card">
+                    <h2 class="story-title"><%= story.title %></h2>
+                    <p class="story-text"><%= story.story %></p>
+
+                    <form action="/user/delete/<%= story._id %>" method="POST">
+                        <button type="submit" class="delete-btn">Delete Post</button>
+                    </form>
+                </div>
+
+            <% }) %>
+        </div>
+
+    <% } %>
+
+    <a href="/user/newStory" class="new-story-link">Write a New Story</a>
+
+</div>
+
+
+
+    </body>

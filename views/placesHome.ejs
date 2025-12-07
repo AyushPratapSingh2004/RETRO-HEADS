@@ -1,0 +1,28 @@
+
+<% layout("layouts/boilerplate") %>
+
+<body>
+
+<h1 class="title">Beautiful Places Shared by Users</h1>
+
+<div class="places-grid">
+
+    <% places.forEach(place => { %>
+        <div class="place-card">
+
+            <h2><%= place.placeName %></h2>
+            <p class="location"><%= place.city %>, <%= place.state %></p>
+
+            <p class="desc"><%= place.description.substring(0, 80) %>...</p>
+
+            <a href="/user/places/view/<%= place._id %>" class="view-btn">View More</a>
+
+        </div>
+    <% }) %>
+
+</div>
+
+<a href="/user/places/new" class="add-btn">Add New Place</a>
+
+</body>
+
