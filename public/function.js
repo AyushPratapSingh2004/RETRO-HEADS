@@ -4,14 +4,14 @@ console.log(loginBtn);
 
 loginBtn.addEventListener("click",()=>{
 
-     window.location.href = "http://localhost:8080/login";
+     window.location.href = "/login";
 
     
 });
 
 signupBtn.addEventListener("click",()=>{
 
-     window.location.href = "http://localhost:8080/signup";
+     window.location.href = "/signup";
 
     
 });
